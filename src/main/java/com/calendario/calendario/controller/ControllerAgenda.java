@@ -1,4 +1,4 @@
 package com.calendario.calendario.controller;
 
-public class ControllerPermisos {
+public class ControllerAgenda {
 }

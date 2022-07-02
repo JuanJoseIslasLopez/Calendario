@@ -1,2 +1,4 @@
-package com.calendario.calendario.persistence.model;public class Usuario {
+package com.calendario.calendario.persistence.model;
+
+public class Usuario {
 }
