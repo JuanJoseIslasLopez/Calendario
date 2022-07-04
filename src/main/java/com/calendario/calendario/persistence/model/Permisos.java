@@ -23,7 +23,8 @@ public class Permisos {
         public Permisos() {
         }
 
-        public Permisos(Integer id, String nombre) {
+        public Permisos(Integer id,
+                        String nombre) {
                 this.id = id;
                 this.nombre = nombre;
         }
