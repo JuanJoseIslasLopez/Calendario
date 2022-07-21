@@ -1,7 +1,6 @@
 package com.calendario.calendario.persistence.model;
 
 import javax.persistence.*;
-import java.time.Clock;
 import java.util.Date;
 
 @Entity

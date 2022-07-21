@@ -5,25 +5,22 @@ import javax.persistence.*;
 @Entity
 @Table
 public class Usuario {
+
     @Id
-    @SequenceGenerator(
-            name = "usuario_sequence",
-            sequenceName = "usuario_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "usuario_sequence"
-    )
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column
+
+    @Column (name = "nombre")
     private String nombre;
-    @Column
+
+    @Column (name = "telefono")
     private String telefono;
-    @Column
+
+    @Column (name = "direccion")
     private String direccion;
-    @Column
+
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @JoinColumn(name = "tipo_usuario")
     private TipoUsuario tipoUsuario;
 
     public Usuario() {
