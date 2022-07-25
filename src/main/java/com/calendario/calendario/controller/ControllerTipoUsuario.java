@@ -1,4 +1,40 @@
 package com.calendario.calendario.controller;
 
+import com.calendario.calendario.domain.servicio.ServiciosTipoUsuario;
+import com.calendario.calendario.persistence.model.TipoUsuario;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(path = "api/v1/permisos")
 public class ControllerTipoUsuario {
+
+    private final ServiciosTipoUsuario serviciosTipoUsuario;
+
+    @Autowired
+    public ControllerTipoUsuario(ServiciosTipoUsuario serviciosTipoUsuario) { this.serviciosTipoUsuario = serviciosTipoUsuario; }
+
+    @GetMapping
+    public List<TipoUsuario> getTipoUsuario() {
+        return serviciosTipoUsuario.getTipoUsuario();
+    }
+
+    @PostMapping
+    public void registerNewTipoUsuario(@RequestBody TipoUsuario tipoUsuario) {
+        serviciosTipoUsuario.addNewTipoUsuario(tipoUsuario);
+    }
+
+    @DeleteMapping(path = "{tipoUsuarioId}")
+    public void deleteTipoUsuario(
+            @PathVariable("tipoUsuarioId") Long tipoUsuarioId) {
+        serviciosTipoUsuario.deleteTipoUsuario(tipoUsuarioId);
+    }
+    @PutMapping(path = "{tipoUsuarioId}")
+    public void updateTipoUsuario(
+            @PathVariable("tipoUsuarioId") Long tipoUsuarioId,
+            @RequestParam(required = false) String nombre) {
+        serviciosTipoUsuario.updateTipoUsuario(tipoUsuarioId, nombre);
+    }
 }

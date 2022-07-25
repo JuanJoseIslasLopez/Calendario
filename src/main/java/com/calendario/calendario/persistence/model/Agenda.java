@@ -1,33 +1,45 @@
 package com.calendario.calendario.persistence.model;
 
 import javax.persistence.*;
-import java.time.Clock;
 import java.util.Date;
 
 @Entity
 @Table
 public class Agenda {
+
     @Id
-    @SequenceGenerator(
-            name = "agenda_sequence",
-            sequenceName = "agenda_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "agenda_sequence"
-    )
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @JoinColumn(name = "usuario")
     private Usuario usuario;
-    @Column
+
+    @Column (name = "fecha")
     private Date fecha;
 
     public Agenda() {
     }
 
+    public Agenda(Integer id,
+                  Usuario usuario,
+                  Date fecha) {
+        this.id = id;
+        this.usuario = usuario;
+        this.fecha = fecha;
+    }
+
     public Agenda(Usuario usuario, Date fecha) {
         this.usuario = usuario;
         this.fecha = fecha;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Usuario getUsuario() {
@@ -49,7 +61,8 @@ public class Agenda {
     @Override
     public String toString() {
         return "Agenda{" +
-                "usuario=" + usuario +
+                "id=" + id +
+                ", usuario=" + usuario +
                 ", fecha=" + fecha +
                 '}';
     }
