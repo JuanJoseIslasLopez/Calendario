@@ -8,6 +8,5 @@ import java.util.Optional;
 
 public interface RepositoryAgenda
         extends JpaRepository<Agenda, Long> {
-
     Optional<Agenda> findAgendaByUsuario(Usuario usuario);
 }

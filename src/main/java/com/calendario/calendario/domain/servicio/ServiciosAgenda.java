@@ -50,6 +50,5 @@ public class ServiciosAgenda {
                 !Objects.equals(agenda.getUsuario(), usuario)) {
             agenda.setUsuario(usuario);*/
        /* }*/
-
     }
 }
