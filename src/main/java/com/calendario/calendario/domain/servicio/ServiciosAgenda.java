@@ -18,7 +18,8 @@ public class ServiciosAgenda {
 
     public List<Agenda> getAgenda() {return repositoryAgenda.findAll();}
 
-    public void addNewAgenda(Agenda agenda) {
+    public Agenda saveAgenda(Agenda agenda) {
+        return repositoryAgenda.save(agenda);
 //        Optional<Agenda> usuarioOptional = repositoryAgenda
 //                .findAgendaByUsuario(agenda.getUsuario());
 //        if(usuarioOptional.isPresent()){
@@ -37,10 +38,12 @@ public class ServiciosAgenda {
     }
 
     @Transactional
-    public Agenda updateAgenda(Agenda agenda,
-                             Usuario usuario) {
-        Agenda agenda = repositoryAgenda.update(agenda);
-        return repositoryAgenda.update(agenda)
+    public Agenda updateAgenda(Agenda agenda) throws Exception {
+        if (agenda.getId()!=null) {
+            return repositoryAgenda.save(agenda);
+        } else {
+            throw new Exception("ID nulo");
+        }
 
                /* .orElseThrow(() -> new IllegalStateException(
                         " agenda with id " +agendaId+ " does not exist "));*/

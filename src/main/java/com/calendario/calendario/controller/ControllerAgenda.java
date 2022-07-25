@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/permisos")
+@RequestMapping(path = "api/v1/agendas")
 public class ControllerAgenda {
 
     private final ServiciosAgenda serviciosAgenda;
@@ -22,8 +22,8 @@ public class ControllerAgenda {
     }
 
     @PostMapping
-    public void registerNewAgenda(@RequestBody Agenda agenda) {
-        serviciosAgenda.addNewAgenda(agenda);
+    public void saveAgenda(@RequestBody Agenda agenda) {
+        serviciosAgenda.saveAgenda(agenda);
     }
 
     @DeleteMapping(path = "{agendaId}")
@@ -33,8 +33,11 @@ public class ControllerAgenda {
     }
     @PutMapping(path = "{agendaId}")
     public void updateAgenda(
-            @PathVariable("agendaId") Long agendaId,
-            @RequestParam(required = false) String usuario) {
-        serviciosAgenda.updateAgenda(agendaId, usuario);
+           @RequestBody Agenda agenda) {
+        try {
+            serviciosAgenda.updateAgenda(agenda);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
