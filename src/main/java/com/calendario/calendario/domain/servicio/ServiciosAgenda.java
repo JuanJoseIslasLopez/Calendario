@@ -1,7 +1,6 @@
 package com.calendario.calendario.domain.servicio;
 
 import com.calendario.calendario.persistence.model.Agenda;
-import com.calendario.calendario.persistence.model.TipoUsuario;
 import com.calendario.calendario.persistence.model.Usuario;
 import com.calendario.calendario.persistence.repository.RepositoryAgenda;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class ServiciosAgenda {
     private final RepositoryAgenda repositoryAgenda;
@@ -19,12 +19,12 @@ public class ServiciosAgenda {
     public List<Agenda> getAgenda() {return repositoryAgenda.findAll();}
 
     public void addNewAgenda(Agenda agenda) {
-//        Optional<TipoUsuario> tipoUsuarioOptional = repositoryTipoUsuario
-//                .findTipoUsuarioByNombre(tipousuario.getNombre());
-//        if(tipoUsuarioOptional.isPresent()){
-//            throw new IllegalStateException("nombre taken");
+//        Optional<Agenda> usuarioOptional = repositoryAgenda
+//                .findAgendaByUsuario(agenda.getUsuario());
+//        if(usuarioOptional.isPresent()){
+//            throw new IllegalStateException("Agenda taken");
 //        }
-        repositoryAgenda.save(agenda);
+//        repositoryAgenda.save(agenda);
     }
 
     public void deleteAgenda(Long agendaId) {
@@ -38,15 +38,15 @@ public class ServiciosAgenda {
 
     @Transactional
     public void updateAgenda(Long agendaId,
-                             String name) {
+                             String usuario) {
         Agenda agenda = repositoryAgenda.findById(agendaId)
                 .orElseThrow(() -> new IllegalStateException(
                         " agenda with id " +agendaId+ " does not exist "));
 
-//        if (name != null &&
-//                name.length() > 0 &&
-//                !Objects.equals(agenda.getUsuario(), name)) {
-//            agenda.setUsuario(name);
+//        if (usuario != null &&
+//                usuario.length() > 0 &&
+//                !Objects.equals(agenda.getUsuario(), usuario)) {
+//            agenda.setUsuario(usuario);
 //        }
 
     }

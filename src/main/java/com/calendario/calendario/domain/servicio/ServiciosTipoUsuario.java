@@ -14,18 +14,18 @@ public class ServiciosTipoUsuario {
     @Autowired
     public ServiciosTipoUsuario(RepositoryTipoUsuario repositoryTipoUsuario){this.repositoryTipoUsuario= repositoryTipoUsuario;}
 
-    public List<TipoUsuario> getTipousuario() {return repositoryTipoUsuario.findAll();}
+    public List<TipoUsuario> getTipoUsuario() {return repositoryTipoUsuario.findAll();}
 
-    public void addNewTipousuario(TipoUsuario tipoUsuario) {
+    public void addNewTipoUsuario(TipoUsuario tipoUsuario) {
 //        Optional<TipoUsuario> tipoUsuarioOptional = repositoryTipoUsuario
-//                .findTipoUsuarioByNombre(tipousuario.getNombre());
+//                .findTipoUsuarioByNombre(tipoUsuario.getNombre());
 //        if(tipoUsuarioOptional.isPresent()){
 //            throw new IllegalStateException("nombre taken");
 //        }
         repositoryTipoUsuario.save(tipoUsuario);
     }
 
-    public void deleteTipousuario(Long tipousuarioId) {
+    public void deleteTipoUsuario(Long tipousuarioId) {
         boolean exists = repositoryTipoUsuario.existsById(tipousuarioId);
         if (!exists) {
             throw new IllegalStateException(
@@ -35,7 +35,7 @@ public class ServiciosTipoUsuario {
     }
 
     @Transactional
-    public void updateTipousuario(Long tipousuarioId,
+    public void updateTipoUsuario(Long tipousuarioId,
                                String name) {
         TipoUsuario tipoUsuario = repositoryTipoUsuario.findById(tipousuarioId)
                 .orElseThrow(() -> new IllegalStateException(

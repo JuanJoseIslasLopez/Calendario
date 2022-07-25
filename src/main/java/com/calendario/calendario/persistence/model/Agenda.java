@@ -21,7 +21,9 @@ public class Agenda {
     public Agenda() {
     }
 
-    public Agenda(Integer id, Usuario usuario, Date fecha) {
+    public Agenda(Integer id,
+                  Usuario usuario,
+                  Date fecha) {
         this.id = id;
         this.usuario = usuario;
         this.fecha = fecha;
