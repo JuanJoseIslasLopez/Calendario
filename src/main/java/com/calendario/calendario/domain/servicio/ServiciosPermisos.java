@@ -43,7 +43,7 @@ public class ServiciosPermisos {
                               String name) {
         Permisos permisos = repositoryPermisos.findById(permisosId)
                 .orElseThrow(() -> new IllegalStateException(
-                        " student with id " +permisosId+ " does not exist "));
+                        " permiso with id " +permisosId+ " does not exist "));
 
         if (name != null &&
                 name.length() > 0 &&

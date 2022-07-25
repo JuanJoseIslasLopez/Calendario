@@ -1,10 +1,12 @@
 package com.calendario.calendario.persistence.repository;
 
-import com.calendario.calendario.persistence.model.Permisos;
+import com.calendario.calendario.persistence.model.Agenda;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
 public interface RepositoryAgenda
         extends JpaRepository<Agenda, Long> {
-    Optional<Agenda> findAgendaByNombre(String nombre);
+
+    Optional<Agenda> findAgendaByUsuario(String usuario);
 }

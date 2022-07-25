@@ -26,7 +26,11 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Integer id, String nombre, String telefono, String direccion, TipoUsuario tipoUsuario) {
+    public Usuario(Integer id,
+                   String nombre,
+                   String telefono,
+                   String direccion,
+                   TipoUsuario tipoUsuario) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
