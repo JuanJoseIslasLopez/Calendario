@@ -31,10 +31,9 @@ public class ControllerTipoUsuario {
             @PathVariable("tipoUsuarioId") Long tipoUsuarioId) {
         serviciosTipoUsuario.deleteTipoUsuario(tipoUsuarioId);
     }
-    @PutMapping(path = "{tipoUsuarioId}")
+    @PutMapping
     public void updateTipoUsuario(
-            @PathVariable("tipoUsuarioId") Long tipoUsuarioId,
-            @RequestParam(required = false) String nombre) {
-        serviciosTipoUsuario.updateTipoUsuario(tipoUsuarioId, nombre);
+            @RequestBody TipoUsuario tipoUsuario) {
+        serviciosTipoUsuario.updateTipoUsuario(tipoUsuario);
     }
 }

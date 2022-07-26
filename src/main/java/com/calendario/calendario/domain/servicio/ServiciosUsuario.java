@@ -39,16 +39,16 @@ public class ServiciosUsuario {
     }
 
     @Transactional
-    public void updateUsuario(Long usuarioId,
-                               String name) {
-        Usuario usuario = repositoryUsuario.findById(usuarioId)
-                .orElseThrow(() -> new IllegalStateException(
-                        " usuario with id " +usuarioId+ " does not exist "));
-
-        if (name != null &&
-                name.length() > 0 &&
-                !Objects.equals(usuario.getNombre(), name)) {
-            usuario.setNombre(name);
-        }
+    public Usuario updateUsuario(Usuario usuario) {
+        return repositoryUsuario.save(usuario);
+//        Usuario usuario = repositoryUsuario.findById(usuarioId)
+//                .orElseThrow(() -> new IllegalStateException(
+//                        " usuario with id " +usuarioId+ " does not exist "));
+//
+//        if (name != null &&
+//                name.length() > 0 &&
+//                !Objects.equals(usuario.getNombre(), name)) {
+//            usuario.setNombre(name);
+//        }
     }
 }

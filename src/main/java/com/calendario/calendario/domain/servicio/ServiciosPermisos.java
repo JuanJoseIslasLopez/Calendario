@@ -29,13 +29,14 @@ public class ServiciosPermisos {
         repositoryPermisos.save(permisos);
     }
 
-    public void deletePermisos(Long permisosId) {
-        boolean exists = repositoryPermisos.existsById(permisosId);
-        if (!exists) {
-            throw new IllegalStateException(
-                    "permisos with id" + permisosId + "does not exists");
-        }
-        repositoryPermisos.deleteById(permisosId);
+    public Permisos deletePermisos(Permisos permisos) {
+//        boolean exists = repositoryPermisos.existsById(permisos);
+//        if (!exists) {
+//            throw new IllegalStateException(
+//                    "permisos with id" + permisosId + "does not exists");
+//        }
+       repositoryPermisos.delete(permisos);
+        return permisos;
     }
 
     @Transactional

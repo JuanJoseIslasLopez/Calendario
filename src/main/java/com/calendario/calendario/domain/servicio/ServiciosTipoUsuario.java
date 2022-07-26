@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class ServiciosTipoUsuario {
@@ -27,26 +26,26 @@ public class ServiciosTipoUsuario {
         repositoryTipoUsuario.save(tipoUsuario);
     }
 
-    public void deleteTipoUsuario(Long tipousuarioId) {
-        boolean exists = repositoryTipoUsuario.existsById(tipousuarioId);
+    public void deleteTipoUsuario(Long tipoUsuarioId) {
+        boolean exists = repositoryTipoUsuario.existsById(tipoUsuarioId);
         if (!exists) {
             throw new IllegalStateException(
-                    "tipousuario with id" + tipousuarioId + "does not exists");
+                    "tipousuario with id" + tipoUsuarioId + "does not exists");
         }
-        repositoryTipoUsuario.deleteById(tipousuarioId);
+        repositoryTipoUsuario.deleteById(tipoUsuarioId);
     }
 
     @Transactional
-    public void updateTipoUsuario(Long tipousuarioId,
-                               String name) {
-        TipoUsuario tipoUsuario = repositoryTipoUsuario.findById(tipousuarioId)
-                .orElseThrow(() -> new IllegalStateException(
-                        " tipousuario with id " +tipousuarioId+ " does not exist "));
-
-        if (name != null &&
-                name.length() > 0 &&
-                !Objects.equals(tipoUsuario.getNombre(), name)) {
-            tipoUsuario.setNombre(name);
-        }
+    public TipoUsuario updateTipoUsuario (TipoUsuario tipoUsuario) {
+        return repositoryTipoUsuario.save(tipoUsuario);
+//        TipoUsuario tipoUsuario = repositoryTipoUsuario.findById(tipousuarioId)
+//                .orElseThrow(() -> new IllegalStateException(
+//                        " tipousuario with id " +tipousuarioId+ " does not exist "));
+//
+//        if (name != null &&
+//                name.length() > 0 &&
+//                !Objects.equals(tipoUsuario.getNombre(), name)) {
+//            tipoUsuario.setNombre(name);
+//        }
     }
 }
