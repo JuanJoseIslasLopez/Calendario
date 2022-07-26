@@ -31,10 +31,9 @@ public class ControllerPermisos {
             @PathVariable("permisosId") Long permisosId) {
         serviciosPermisos.deletePermisos(permisosId);
     }
-    @PutMapping(path = "{permisosId}")
+    @PutMapping
     public void updatePermisos(
-            @PathVariable("permisosId") Long permisosId,
-            @RequestParam(required = false) String nombre) {
-        serviciosPermisos.updatePermisos(permisosId, nombre);
+            @RequestBody Permisos permisos) {
+        serviciosPermisos.updatePermisos(permisos);
     }
 }

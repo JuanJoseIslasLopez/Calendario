@@ -3,12 +3,14 @@ package com.calendario.calendario.domain.servicio;
 import com.calendario.calendario.persistence.model.Usuario;
 import com.calendario.calendario.persistence.repository.RepositoryUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+@Service
 public class ServiciosUsuario {
 
     private final RepositoryUsuario repositoryUsuario;

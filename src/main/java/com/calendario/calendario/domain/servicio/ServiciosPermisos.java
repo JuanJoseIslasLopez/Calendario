@@ -39,16 +39,16 @@ public class ServiciosPermisos {
     }
 
     @Transactional
-    public void updatePermisos(Long permisosId,
-                              String name) {
-        Permisos permisos = repositoryPermisos.findById(permisosId)
-                .orElseThrow(() -> new IllegalStateException(
-                        " permiso with id " +permisosId+ " does not exist "));
-
-        if (name != null &&
-                name.length() > 0 &&
-                !Objects.equals(permisos.getNombre(), name)) {
-            permisos.setNombre(name);
-        }
+    public Permisos updatePermisos (Permisos permisos) {
+        return repositoryPermisos.save(permisos);
+//        Permisos permisos = repositoryPermisos.findById(permisosId)
+//                .orElseThrow(() -> new IllegalStateException(
+//                        " permiso with id " +permisosId+ " does not exist "));
+//
+//        if (name != null &&
+//                name.length() > 0 &&
+//                !Objects.equals(permisos.getNombre(), name)) {
+//            permisos.setNombre(name);
+//        }
     }
 }
