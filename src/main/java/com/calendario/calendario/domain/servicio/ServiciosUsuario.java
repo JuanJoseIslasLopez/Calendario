@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -29,13 +28,14 @@ public class ServiciosUsuario {
         repositoryUsuario.save(usuario);
     }
 
-    public void deleteUsuario(Long usuarioId) {
-        boolean exists = repositoryUsuario.existsById(usuarioId);
-        if (!exists) {
-            throw new IllegalStateException(
-                    "usuario with id" + usuarioId + "does not exists");
-        }
-        repositoryUsuario.deleteById(usuarioId);
+        public Usuario deleteUsuario(Usuario usuario) {
+//        boolean exists = repositoryUsuario.existsById(usuarioId);
+//        if (!exists) {
+//            throw new IllegalStateException(
+//                    "usuario with id" + usuarioId + "does not exists");
+//        }
+        repositoryUsuario.delete(usuario);
+        return usuario;
     }
 
     @Transactional

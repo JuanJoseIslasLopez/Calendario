@@ -26,10 +26,10 @@ public class ControllerTipoUsuario {
         serviciosTipoUsuario.addNewTipoUsuario(tipoUsuario);
     }
 
-    @DeleteMapping(path = "{tipoUsuarioId}")
+    @DeleteMapping
     public void deleteTipoUsuario(
-            @PathVariable("tipoUsuarioId") Long tipoUsuarioId) {
-        serviciosTipoUsuario.deleteTipoUsuario(tipoUsuarioId);
+            @RequestBody TipoUsuario tipoUsuario) {
+        serviciosTipoUsuario.deleteTipoUsuario(tipoUsuario);
     }
     @PutMapping
     public void updateTipoUsuario(

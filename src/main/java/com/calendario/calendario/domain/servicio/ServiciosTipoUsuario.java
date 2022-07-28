@@ -26,13 +26,14 @@ public class ServiciosTipoUsuario {
         repositoryTipoUsuario.save(tipoUsuario);
     }
 
-    public void deleteTipoUsuario(Long tipoUsuarioId) {
-        boolean exists = repositoryTipoUsuario.existsById(tipoUsuarioId);
-        if (!exists) {
-            throw new IllegalStateException(
-                    "tipousuario with id" + tipoUsuarioId + "does not exists");
-        }
-        repositoryTipoUsuario.deleteById(tipoUsuarioId);
+    public TipoUsuario deleteTipoUsuario(TipoUsuario tipoUsuario) {
+//        boolean exists = repositoryTipoUsuario.existsById(tipoUsuarioId);
+//        if (!exists) {
+//            throw new IllegalStateException(
+//                    "tipousuario with id" + tipoUsuarioId + "does not exists");
+//        }
+        repositoryTipoUsuario.delete(tipoUsuario);
+        return tipoUsuario;
     }
 
     @Transactional
