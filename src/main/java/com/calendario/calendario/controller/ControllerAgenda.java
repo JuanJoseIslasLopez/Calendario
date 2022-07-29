@@ -26,18 +26,16 @@ public class ControllerAgenda {
         serviciosAgenda.saveAgenda(agenda);
     }
 
-    @DeleteMapping(path = "{agendaId}")
+    @DeleteMapping
     public void deleteAgenda(
-            @PathVariable("agendaId") Long agendaId) {
-        serviciosAgenda.deleteAgenda(agendaId);
+            @RequestBody Agenda agenda) {
+        serviciosAgenda.deleteAgenda(agenda);
     }
-    @PutMapping(path = "{agendaId}")
+    @PutMapping
     public void updateAgenda(
            @RequestBody Agenda agenda) {
-        try {
             serviciosAgenda.updateAgenda(agenda);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
+
     }
-}
+

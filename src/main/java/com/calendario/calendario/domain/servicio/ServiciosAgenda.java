@@ -13,9 +13,13 @@ public class ServiciosAgenda {
     private final RepositoryAgenda repositoryAgenda;
 
     @Autowired
-    public ServiciosAgenda(RepositoryAgenda repositoryAgenda){this.repositoryAgenda= repositoryAgenda;}
+    public ServiciosAgenda(RepositoryAgenda repositoryAgenda) {
+        this.repositoryAgenda = repositoryAgenda;
+    }
 
-    public List<Agenda> getAgenda() {return repositoryAgenda.findAll();}
+    public List<Agenda> getAgenda() {
+        return repositoryAgenda.findAll();
+    }
 
     public Agenda saveAgenda(Agenda agenda) {
         return repositoryAgenda.save(agenda);
@@ -27,22 +31,20 @@ public class ServiciosAgenda {
 //        repositoryAgenda.save(agenda);
     }
 
-    public void deleteAgenda(Long agendaId) {
-        boolean exists = repositoryAgenda.existsById(agendaId);
-        if (!exists) {
-            throw new IllegalStateException(
-                    "agenda with id" + agendaId + "does not exists");
-        }
-        repositoryAgenda.deleteById(agendaId);
+    public Agenda deleteAgenda(Agenda agenda) {
+//        boolean exists = repositoryAgenda.existsById(agendaId);
+//        if (!exists) {
+//            throw new IllegalStateException(
+//                    "agenda with id" + agendaId + "does not exists");
+//        }
+         repositoryAgenda.delete(agenda);
+    return agenda;
     }
 
     @Transactional
-    public Agenda updateAgenda(Agenda agenda) throws Exception {
-        if (agenda.getId()!=null) {
-            return repositoryAgenda.save(agenda);
-        } else {
-            throw new Exception("ID nulo");
-        }
+    public Agenda updateAgenda(Agenda agenda) {
+        return repositoryAgenda.save(agenda);
+
 
                /* .orElseThrow(() -> new IllegalStateException(
                         " agenda with id " +agendaId+ " does not exist "));*/
@@ -51,6 +53,7 @@ public class ServiciosAgenda {
                 usuario.length() > 0 &&
                 !Objects.equals(agenda.getUsuario(), usuario)) {
             agenda.setUsuario(usuario);*/
-       /* }*/
+        /* }*/
+//        }
     }
 }
